@@ -1,12 +1,9 @@
 <script>
-import axios from 'axios';
-import {store} from './data/store';
 import ProjectCard from './components/ProjectCard.vue';
 
   export default {
     data(){
       return{
-        projects: [],
       }
     },
     
@@ -14,21 +11,6 @@ import ProjectCard from './components/ProjectCard.vue';
       ProjectCard
     },
 
-    methods:{
-      getApi(){
-        axios.get(store.apiUrl)
-        .then(result =>{
-          this.projects = result.data
-        })
-        .catch(error =>{
-          console.log(error.message);
-        })
-      }
-    },
-
-    mounted(){
-      this.getApi();
-    }
   }
 </script>
 
