@@ -19,7 +19,7 @@ import ProjectCard from './components/ProjectCard.vue';
         axios.get(store.apiUrl)
         .then(result =>{
           this.projects = result.data
-          // console.log(this.projects);
+          console.log(this.projects);
         })
         .catch(error =>{
           console.log(error.message);
@@ -34,13 +34,14 @@ import ProjectCard from './components/ProjectCard.vue';
 </script>
 
 <template>
-  <div>
-    <h3>lista progetti</h3>
-    <ul>
-      <li v-for="project in projects" :key="project.id">
+  <div class="projects-container">
+    <h1 class="text-center fw-semibold my-4">lista progetti</h1>
+    <div class="row row-cols-4 m-0">
+
+      <div v-for="project in projects" :key="project.id">
         <ProjectCard :project="project"/>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
