@@ -38,7 +38,7 @@ import ProjectCard from './components/ProjectCard.vue';
     <h3>lista progetti</h3>
     <ul>
       <li v-for="project in projects" :key="project.id">
-        <ProjectCard />
+        <ProjectCard :project="project"/>
       </li>
     </ul>
   </div>

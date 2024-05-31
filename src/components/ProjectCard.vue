@@ -7,6 +7,10 @@
             }
         },
 
+        props:{
+            project: Object
+        },
+
         methods:{
 
         },
@@ -18,8 +22,14 @@
 </script>
 
 <template>
-    <div>
-        <h2>CardProject</h2>
+    <div class="col">
+        <div class="gm_car">
+            <div class="title">
+                <h2>{{ project.title }}</h2>
+            </div>
+            
+
+        </div>
     </div>
 </template>
 
