@@ -1,12 +1,17 @@
 <script>
 import axios from 'axios';
 import {store} from './data/store';
+import ProjectCard from './components/ProjectCard.vue';
 
   export default {
     data(){
       return{
         projects: [],
       }
+    },
+    
+    components:{
+      ProjectCard
     },
 
     methods:{
@@ -31,7 +36,7 @@ import {store} from './data/store';
   <div>
     <h3>lista progetti</h3>
     <ul>
-      <li v-for="project in projects" :key="project.id">{{ project.title }}</li>
+      <ProjectCard />
     </ul>
   </div>
 </template>
