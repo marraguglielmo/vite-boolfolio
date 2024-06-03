@@ -1,5 +1,8 @@
+@use './variables' as *;
+
 header{
-    background-color: brown;
+    // background-color: brown;
+    background-color: $brown-primary;
     height: 80px;
     .container{
         height: 100%;
@@ -25,9 +28,10 @@ header{
                         border-radius: 5px;
                         overflow: hidden;
                         transition: background-color .2s;
+                        font-weight: 700;
                         &:hover{
                             background-color: white;
-                            color: brown;
+                            color: $brown-primary;
                         }
                     }
                 }

@@ -1,0 +1,7 @@
+@use './variables' as *;
+
+h1{
+    color: darken($brown-primary, 25%) !important;
+    text-align: center;
+    margin: 1.5rem 0 !important;
+}
