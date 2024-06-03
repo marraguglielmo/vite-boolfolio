@@ -1,16 +1,18 @@
 <script>
 import {store} from '../data/store'
 import axios from 'axios'
+import Paginator from '../components/partials/Paginator.vue'
 
     export default {
         data(){
             return{
-                projects: []
+                projects: [],
+                paginatorData: {}
             }
         },
 
         components:{
-
+            Paginator
         },
 
         methods:{
@@ -19,7 +21,10 @@ import axios from 'axios'
                 .then(result =>{
                     console.log(result.data);
                     this.projects = result.data.data;
-                    console.log(this.projects);
+                    this.paginatorData.current_page = result.data.current_page;
+                    this.paginatorData.links = result.data.links;
+                    this.paginatorData.total = result.data.total;
+                    console.log(this.paginatorData);
                 })
                 .catch(error =>{
                     console.log(error.message);
@@ -66,8 +71,8 @@ import axios from 'axios'
                 </div>
             </div>
             
-            
-            
+            <!-- paginator -->
+            <Paginator :data="paginatorData"/>
             
         </div>
     </div>

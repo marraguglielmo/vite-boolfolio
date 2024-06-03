@@ -1,0 +1,43 @@
+<script>
+    export default {
+        props:{
+            data: Object
+        }
+    }
+</script>
+
+<template>
+
+    <div class="paginator">
+        <button v-for="link in data.links" :key="link.label" v-html="link.label"> </button>
+    </div>
+    
+</template>
+
+<style lang="scss" scoped>
+@use '../../assets/scss/partials/variables' as *;
+
+.paginator{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button{
+        background-color: white;
+        padding: 8px 12px;
+        margin: 0 5px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        outline: none;
+        &:hover{
+            background-color: rgba(180, 158, 129, 0.26);
+background-image: linear-gradient(180deg, rgba(180, 158, 129, 0.385) 5%, rgba(255, 255, 255, 1) 100%);
+background-size: auto;
+background-position: left top;
+background-repeat: repeat;
+            // border: 1px solid $brown-primary;
+        }
+    }
+}
+
+
+</style>
