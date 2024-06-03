@@ -20,6 +20,7 @@ footer{
     color: whitesmoke;
     min-height: 100px;
     line-height: 100px;
+    margin-top: 1.5rem;
 }
 
 </style>

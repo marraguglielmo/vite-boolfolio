@@ -2,36 +2,36 @@
 import {store} from '../data/store'
 import axios from 'axios'
 import Paginator from '../components/partials/Paginator.vue'
+import Loader from '../components/partials/Loader.vue'
 
     export default {
         data(){
             return{
                 projects: [],
-                paginatorData: {}
+                paginatorData: {},
+                loading: true
             }
         },
 
         components:{
-            Paginator
+            Paginator,
+            Loader
         },
 
         methods:{
 
-            callApi(link){
-                console.log(link);
-            },
-            
             getApi(apiUrl){
+                this.loading = true;
                 axios.get(apiUrl)
                 .then(result =>{
-                    console.log(result.data);
+                    this.loading = false;
                     this.projects = result.data.data;
                     this.paginatorData.current_page = result.data.current_page;
                     this.paginatorData.links = result.data.links;
                     this.paginatorData.total = result.data.total;
-                    console.log(this.paginatorData);
                 })
                 .catch(error =>{
+                    this.loading = false;
                     console.log(error.message);
                 })
             }
@@ -46,6 +46,12 @@ import Paginator from '../components/partials/Paginator.vue'
 <template>
     <div>
         <h1>Projects</h1>
+
+        <!-- loader -->
+        <div v-if="loading">
+            <Loader />
+        </div>
+        
         <div class="container d-flex flex-wrap">
             <div class="row row-cols-3">
                 <div v-for="project in projects" :key="project.id" class="col">
@@ -77,7 +83,7 @@ import Paginator from '../components/partials/Paginator.vue'
             </div>
             
             <!-- paginator -->
-            <Paginator :data="paginatorData" @callApi="getApi"/>
+            <Paginator v-if="!loading" :data="paginatorData" @callApi="getApi"/>
             
         </div>
     </div>
