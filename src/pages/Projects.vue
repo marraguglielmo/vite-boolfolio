@@ -5,7 +5,7 @@ import axios from 'axios'
     export default {
         data(){
             return{
-
+                projects: []
             }
         },
 
@@ -17,7 +17,8 @@ import axios from 'axios'
             getApi(){
                 axios.get(store.apiUrl)
                 .then(result =>{
-                    console.log(result.data);
+                    this.projects = result.data;
+                    console.log(this.projects);
                 })
             }
         },
