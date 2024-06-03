@@ -17,8 +17,12 @@ import axios from 'axios'
             getApi(){
                 axios.get(store.apiUrl)
                 .then(result =>{
-                    this.projects = result.data;
+                    console.log(result.data);
+                    this.projects = result.data.data;
                     console.log(this.projects);
+                })
+                .catch(error =>{
+                    console.log(error.message);
                 })
             }
         },
@@ -32,6 +36,14 @@ import axios from 'axios'
 <template>
     <div>
         <h1>Projects</h1>
+        <div class="container">
+            <ul>
+                <li v-for="project in projects" :key="project.id">
+                    {{ project.id }}.
+                    {{ project.title }}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
