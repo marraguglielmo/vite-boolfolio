@@ -2,6 +2,12 @@
     export default {
         props:{
             data: Object
+        },
+
+        methods:{
+            callApi(link){
+                this.$emit('callApi', link)
+            }
         }
     }
 </script>
@@ -9,7 +15,14 @@
 <template>
 
     <div class="paginator">
-        <button v-for="link in data.links" :key="link.label" v-html="link.label"> </button>
+        <button
+            v-for="link in data.links"
+            :key="link.label"
+            v-html="link.label"
+            :disabled="!link.url"
+            @click="callApi(link.url)"
+        > 
+        </button>
     </div>
     
 </template>
@@ -28,13 +41,13 @@
         border: 1px solid transparent;
         border-radius: 5px;
         outline: none;
+        transition: background-color .2s;
         &:hover{
             background-color: rgba(180, 158, 129, 0.26);
-background-image: linear-gradient(180deg, rgba(180, 158, 129, 0.385) 5%, rgba(255, 255, 255, 1) 100%);
-background-size: auto;
-background-position: left top;
-background-repeat: repeat;
-            // border: 1px solid $brown-primary;
+            background-image: linear-gradient(180deg, rgba(180, 158, 129, 0.385) 5%, rgba(255, 255, 255, 1) 100%);
+            background-size: auto;
+            background-position: left top;
+            background-repeat: repeat;
         }
     }
 }

@@ -16,8 +16,13 @@ import Paginator from '../components/partials/Paginator.vue'
         },
 
         methods:{
-            getApi(){
-                axios.get(store.apiUrl)
+
+            callApi(link){
+                console.log(link);
+            },
+            
+            getApi(apiUrl){
+                axios.get(apiUrl)
                 .then(result =>{
                     console.log(result.data);
                     this.projects = result.data.data;
@@ -33,7 +38,7 @@ import Paginator from '../components/partials/Paginator.vue'
         },
 
         mounted(){
-            this.getApi();
+            this.getApi(store.apiUrl);
         }
     }
 </script>
@@ -72,7 +77,7 @@ import Paginator from '../components/partials/Paginator.vue'
             </div>
             
             <!-- paginator -->
-            <Paginator :data="paginatorData"/>
+            <Paginator :data="paginatorData" @callApi="getApi"/>
             
         </div>
     </div>

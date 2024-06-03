@@ -1,5 +1,6 @@
 <script>
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue'
 
   export default {
     data(){
@@ -8,7 +9,8 @@ import Header from './components/Header.vue';
     },
     
     components:{
-      Header
+      Header,
+      Footer
     },
 
     methods:{
@@ -29,18 +31,8 @@ import Header from './components/Header.vue';
     
   </div>
   
+  <Footer />
   
-  
-  
-  <!-- <div class="projects-container">
-    <h1 class="text-center fw-semibold my-4">lista progetti</h1>
-    <div class="row row-cols-4 m-0">
-
-      <div v-for="project in projects" :key="project.id">
-        <ProjectCard :project="project"/>
-      </div>
-    </div>
-  </div> -->
 </template>
 
 
