@@ -16,7 +16,7 @@
         },
 
         mounted(){
-
+            console.log(this.project);
         }
     }
 </script>
@@ -29,6 +29,9 @@
             </div>
             <div class="type">
                 {{ project.type.title }}
+            </div>
+            <div class="tech">
+                <div v-for="technology in project.technologies" :key="technology.id">{{ technology.title }}</div>
             </div>
             <div class="github-url">
                 <a :href="project.github_url">{{ project.github_url }}</a>

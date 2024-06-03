@@ -19,7 +19,6 @@ import ProjectCard from './components/ProjectCard.vue';
         axios.get(store.apiUrl)
         .then(result =>{
           this.projects = result.data
-          console.log(this.projects);
         })
         .catch(error =>{
           console.log(error.message);
