@@ -6,7 +6,7 @@
 
 <template>
     <div>
-        <h1>ERROR404</h1>
+        <h1 class="text-center fw-bold my-5">ERROR404</h1>
     </div>
 </template>
 

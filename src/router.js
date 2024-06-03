@@ -1,4 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import Home from './pages/Home.vue';
+import Projects from './pages/Projects.vue';
+import About from './pages/About.vue';
+import Error404 from './pages/Error404.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -11,15 +15,15 @@ const router = createRouter({
         {
             path: '/progetti',
             name: 'projects',
-            component: Home
+            component: Projects
         },
         {
             path: '/chi-sono',
             name: 'about',
-            component: Home
+            component: About
         },
         {
-            path: '/patchMatch(.*)',
+            path: '/:patchMatch(.*)*',
             name: 'error',
             component: Error404
         },

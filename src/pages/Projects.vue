@@ -15,7 +15,10 @@ import axios from 'axios'
 
         methods:{
             getApi(){
-                
+                axios.get(store.apiUrl)
+                .then(result =>{
+                    console.log(result.data);
+                })
             }
         },
 
@@ -27,7 +30,7 @@ import axios from 'axios'
 
 <template>
     <div>
-
+        <h1>Projects</h1>
     </div>
 </template>
 
