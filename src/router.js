@@ -4,6 +4,8 @@ import Projects from './pages/Projects.vue';
 import About from './pages/About.vue';
 import Skills from './pages/Skills.vue';
 import ProjectDetail from './pages/ProjectDetail.vue';
+import TechnologiesProjects from './pages/TechnologiesProjects.vue';
+import TypesProjects from './pages/TypesProjects.vue';
 import Error404 from './pages/Error404.vue';
 
 const router = createRouter({
@@ -33,6 +35,16 @@ const router = createRouter({
             path: '/dettaglio-progetto/:slug',
             name: 'projectDetail',
             component: ProjectDetail
+        },
+        {
+            path: '/technologie-progetti/:slug',
+            name: 'technologiesProjects',
+            component: TechnologiesProjects
+        },
+        {
+            path: '/tipo-progetti/:slug',
+            name: 'typesProjects',
+            component: TypesProjects
         },
         {
             path: '/:patchMatch(.*)*',

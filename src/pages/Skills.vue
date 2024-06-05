@@ -61,7 +61,7 @@ import Loader from '../components/partials/Loader.vue';
             
             <!-- technologies -->
             <div class="row row-cols-3 m-0 p-0 justify-content-center">
-                <div v-for="technology in technologies" :key="technology.id" class="col">
+                <router-link :to="{name: 'technologiesProjects', params: {slug: technology.slug}}" v-for="technology in technologies" :key="technology.id" class="col">
                     <div class="ag-courses_item">
                         <a href="#" class="ag-courses-item_link">
                             <div class="ag-courses-item_bg"></div>
@@ -71,14 +71,14 @@ import Loader from '../components/partials/Loader.vue';
                             </div>
                         </a>
                     </div>
-                </div>
+                </router-link>
             </div>
 
             <div class="line my-5"></div>
 
             <!-- types -->
             <div class="row row-cols-3 m-0 p-0 justify-content-center">
-                <div v-for="type in types" :key="type.id" class="col">
+                <router-link :to="{name: 'typesProjects', params: {slug: type.slug}}" v-for="type in types" :key="type.id" class="col">
                     <div class="ag-courses_item">
                         <a href="#" class="ag-courses-item_link">
                             <div class="ag-courses-item_bg"></div>
@@ -88,7 +88,7 @@ import Loader from '../components/partials/Loader.vue';
                             </div>
                         </a>
                     </div>
-                </div>
+                </router-link>
             </div>
             
             
@@ -113,10 +113,12 @@ import Loader from '../components/partials/Loader.vue';
     overflow: hidden;
 
     border-radius: 28px;
-    a{
-        text-decoration: none;
-    }
 }
+
+a{
+    text-decoration: none;
+}
+
 .ag-courses-item_link {
     display: block;
     padding: 30px 20px;
