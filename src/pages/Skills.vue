@@ -1,7 +1,51 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store';
+import Loader from '../components/partials/Loader.vue';
+
     export default {
+
+        data(){
+            return{
+                technologies: [],
+                types: [],
+                loading : true
+            }
+        },
+
+        components:{
+            Loader
+        },
+        
+        methods:{
+
+            getApi(apiUrl, type = ''){
+                this.loading = true;
+                axios.get(apiUrl + type)
+                .then(result =>{
+                    this.loading = false;
+                    switch (type) {
+                        case 'technologies':
+                            this.technologies = result.data;
+                            break;
+                            case 'types':
+                                this.types = result.data;
+                        // default:
+                        //     break;
+                    }
+                })
+                .catch(error =>{
+                    this.loading = false;
+                    console.log(error.message);
+                })
+            }
+            
+        },
+
+        mounted(){
+            this.getApi(store.apiUrl, 'types')
+            this.getApi(store.apiUrl, 'technologies')
+        }
     }
 </script>
 
@@ -9,18 +53,44 @@ import { store } from '../data/store';
     <div>
         <h1>Skills</h1>
 
-        <div class="container row row-cols-3 m-0 p-0">
-            <div class="col">
-                <div class="ag-courses_item">
-                    <a href="#" class="ag-courses-item_link">
-                        <div class="ag-courses-item_bg"></div>
+        <div v-if="loading">
+            <Loader />
+        </div>
+        
+        <div class="container">
+            
+            <!-- technologies -->
+            <div class="row row-cols-3 m-0 p-0 justify-content-center">
+                <div v-for="technology in technologies" :key="technology.id" class="col">
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                            <div class="ag-courses-item_bg"></div>
 
-                        <div class="ag-courses-item_title">
-                            tech
-                        </div>
-                    </a>
+                            <div class="ag-courses-item_title m-0 d-flex align-items-center justify-content-center">
+                                {{ technology.title }}
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <div class="line my-5"></div>
+
+            <!-- types -->
+            <div class="row row-cols-3 m-0 p-0 justify-content-center">
+                <div v-for="type in types" :key="type.id" class="col">
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                            <div class="ag-courses-item_bg"></div>
+
+                            <div class="ag-courses-item_title m-0 d-flex align-items-center justify-content-center">
+                                {{ type.title }}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
             
         </div>
         
@@ -30,10 +100,15 @@ import { store } from '../data/store';
 <style lang="scss" scoped>
 @use '../assets/scss/partials/variables' as *;
 
+.row{
+    .col{
+        padding: 15px 15px;
+    }
+}
+
 .ag-courses_item {
     -ms-flex-preferred-size: calc(33.33333% - 30px);
     flex-basis: calc(33.33333% - 30px);
-    margin: 0 15px 30px;
 
     overflow: hidden;
 
@@ -45,7 +120,7 @@ import { store } from '../data/store';
 .ag-courses-item_link {
     display: block;
     padding: 30px 20px;
-    background-color: #121212;
+    background-color: $dark;
 
     overflow: hidden;
 
@@ -77,7 +152,7 @@ import { store } from '../data/store';
 .ag-courses-item_bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
+    background-color: $brown-primary;
 
     z-index: 1;
     position: absolute;
@@ -140,5 +215,11 @@ import { store } from '../data/store';
     }
 }
 
+// line
+.line{
+    border-top: 5px solid $dark;
+    border-radius: 50px;
+    opacity: .9;
+}
 
 </style>
