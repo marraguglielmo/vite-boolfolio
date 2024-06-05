@@ -7,9 +7,9 @@ import { store } from '../data/store';
 
         methods:{
             getApi(){
-                // console.log(this.$route.params.slug);
+                console.log(this.$route.params.slug);
                 const slug = this.$route.params.slug;
-                axios.get(store.apiUrl + 'post-by-slug' + slug)
+                axios.get(store.apiUrl + 'project-by-slug/' + slug)
                     .then(result =>{
                         console.log(result.data);
                     })
