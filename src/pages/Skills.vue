@@ -9,7 +9,7 @@ import { store } from '../data/store';
     <div>
         <h1>Skills</h1>
 
-        <div class="container row">
+        <div class="container row row-cols-3 m-0 p-0">
             <div class="col">
                 <div class="ag-courses_item">
                     <a href="#" class="ag-courses-item_link">
@@ -21,6 +21,7 @@ import { store } from '../data/store';
                     </a>
                 </div>
             </div>
+            
         </div>
         
     </div>
@@ -32,7 +33,6 @@ import { store } from '../data/store';
 .ag-courses_item {
     -ms-flex-preferred-size: calc(33.33333% - 30px);
     flex-basis: calc(33.33333% - 30px);
-    // width: ;
     margin: 0 15px 30px;
 
     overflow: hidden;

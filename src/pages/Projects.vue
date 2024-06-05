@@ -20,9 +20,9 @@ import Loader from '../components/partials/Loader.vue'
 
         methods:{
 
-            getApi(apiUrl){
+            getApi(apiUrl, type){
                 this.loading = true;
-                axios.get(apiUrl)
+                axios.get(apiUrl + type)
                 .then(result =>{
                     this.loading = false;
                     this.projects = result.data.data;
@@ -38,7 +38,7 @@ import Loader from '../components/partials/Loader.vue'
         },
 
         mounted(){
-            this.getApi(store.apiUrl);
+            this.getApi(store.apiUrl, 'projects');
         }
     }
 </script>
