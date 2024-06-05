@@ -57,7 +57,7 @@ import Loader from '../components/partials/Loader.vue';
             <Loader />
         </div>
         
-        <div class="container">
+        <div v-else class="container">
             
             <!-- technologies -->
             <div class="row row-cols-3 m-0 p-0 justify-content-center">
