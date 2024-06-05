@@ -4,6 +4,12 @@ import { store } from '../data/store';
 
     export default {
         name: 'ProjectDetail',
+        
+        data(){
+            return{
+                project: {}
+            }
+        },
 
         methods:{
             getApi(){
@@ -11,7 +17,8 @@ import { store } from '../data/store';
                 const slug = this.$route.params.slug;
                 axios.get(store.apiUrl + 'project-by-slug/' + slug)
                     .then(result =>{
-                        console.log(result.data);
+                        this.project = result.data.project
+                        console.log(this.project);
                     })
                     .catch(error =>{
                         console.log(error.message);
@@ -26,12 +33,21 @@ import { store } from '../data/store';
 </script>
 
 <template>
-    <div>
-        <h1>Dettaglio progetto</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quidem placeat enim aliquid molestiae a rerum quibusdam excepturi, minus illo atque doloribus voluptates blanditiis nam optio eius mollitia unde natus!</p>
+    <div class="text-center">
+        <h1>{{ project.title }}</h1>
+        <p>
+            <a :href="project.github_url">{{ project.github_url }}</a>
+        </p>
+        <div v-for="technology in project.technologies" :key="technology.id">
+            {{ technology.title }}
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+
+h1{
+    text-transform: capitalize;
+}
 
 </style>
