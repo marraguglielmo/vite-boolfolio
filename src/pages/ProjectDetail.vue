@@ -52,7 +52,15 @@ import Loader from '../components/partials/Loader.vue';
             formattedDate(){
                 const date = new Date(this.project.updated_at)
 
-                return new Intl.DateTimeFormat(navigator.language).format(date);
+                let options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+
+                };
+                
+                return new Intl.DateTimeFormat(navigator.language, options).format(date);
             }
         },
         
