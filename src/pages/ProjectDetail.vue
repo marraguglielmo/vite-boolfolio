@@ -34,6 +34,22 @@ import Loader from '../components/partials/Loader.vue';
                     })
             }   
         },  
+
+        computed:{
+            type(){
+                if(!this.project.type.title){
+                    return 'Nessun tipo'
+                }
+                return this.project.type.title;
+            
+            },
+            technologies(){
+                if(!this.project.technologies){
+                    return 'Nessuna tecnologia'
+                }
+                return this.project.technologies.map(technology => technology.title).join(' - ');
+            }
+        },
         
         mounted(){
             this.getApi();
@@ -51,10 +67,14 @@ import Loader from '../components/partials/Loader.vue';
         <div v-else class="text-center">
             <h1>{{ project.title }}</h1>
             <p>
-                <a :href="project.github_url">{{ project.github_url }}</a>
+                <a :href="project.github_url">{{ project.github_url ? project.github_url :'il link di Github non è disponibile' }}</a>
             </p>
-            <div v-for="technology in project.technologies" :key="technology.id">
-                {{ technology.title }}
+            <div>
+                {{ technologies }}
+            </div>
+
+            <div>
+                {{ type }}
             </div>
         </div>
     </div>
