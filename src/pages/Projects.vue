@@ -53,7 +53,7 @@ import Loader from '../components/partials/Loader.vue'
         </div>
         
         <div class="container d-flex flex-wrap">
-            <div class="row row-cols-3">
+            <div class="row row-cols-3 w-100">
                 <div v-for="project in projects" :key="project.id" class="col">
                     <!-- card -->
                     <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}" class="card">
@@ -101,6 +101,7 @@ h3{
 
 .col{
     padding: 40px 30px;
+    width: calc(100% / 3);
 }
 
 a{

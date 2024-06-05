@@ -44,10 +44,15 @@ import Loader from '../components/partials/Loader.vue';
             
             },
             technologies(){
-                if(!this.project.technologies){
+                if(this.project.technologies.length === 0){
                     return 'Nessuna tecnologia'
                 }
                 return this.project.technologies.map(technology => technology.title).join(' - ');
+            },
+            formattedDate(){
+                const date = new Date(this.project.updated_at)
+
+                return new Intl.DateTimeFormat(navigator.language).format(date);
             }
         },
         
@@ -75,6 +80,10 @@ import Loader from '../components/partials/Loader.vue';
 
             <div>
                 {{ type }}
+            </div>
+
+            <div class="date my-4">
+                {{ formattedDate }}
             </div>
         </div>
     </div>
