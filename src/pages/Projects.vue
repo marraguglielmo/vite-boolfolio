@@ -20,7 +20,7 @@ import Loader from '../components/partials/Loader.vue'
 
         methods:{
 
-            getApi(apiUrl, type){
+            getApi(apiUrl, type = ''){
                 this.loading = true;
                 axios.get(apiUrl + type)
                 .then(result =>{
