@@ -12,6 +12,7 @@
                 <ul>
                     <li><router-link :to="{name: 'home'}">Home</router-link></li>
                     <li><router-link :to="{name: 'projects'}">Progetti</router-link></li>
+                    <li><router-link :to="{name: 'skills'}">Skills</router-link></li>
                     <li><router-link :to="{name: 'about'}">Chi sono</router-link></li>
                 </ul>
             </div>

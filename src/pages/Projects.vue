@@ -56,7 +56,7 @@ import Loader from '../components/partials/Loader.vue'
             <div class="row row-cols-3">
                 <div v-for="project in projects" :key="project.id" class="col">
                     <!-- card -->
-                    <div class="card">
+                    <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}" class="card">
                         <div class="content">
                             <div class="d-flex align-items-center">
                                 <!-- svg -->
@@ -78,7 +78,7 @@ import Loader from '../components/partials/Loader.vue'
                             {{ project.type.title }}
                             </p>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </div>
             
@@ -103,6 +103,9 @@ h3{
     padding: 40px 30px;
 }
 
+a{
+    text-decoration: none;
+}
 
 .card {
     position: relative;
